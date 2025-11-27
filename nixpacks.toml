@@ -1,11 +1,10 @@
 [phases.setup]
-nixPkgs = ["python311", "playwright-driver-chromium"]
+nixPkgs = ["python311"]
 
 [phases.install]
 cmds = [
-    "pip install -r requirements.txt",
-    "python -m spacy download en_core_web_sm",
-    "playwright install chromium"
+    "pip install --no-cache-dir -r requirements.txt",
+    "python -m spacy download en_core_web_sm"
 ]
 
 [phases.build]

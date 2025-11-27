@@ -26,8 +26,8 @@ pydantic-settings==2.1.0
 python-dateutil==2.8.2
 requests==2.31.0
 
-# Phase 2 - OCR & Web Scraping
-playwright==1.40.0
+# Phase 2 - OCR & Web Scraping (Playwright removed to reduce build size)
+# playwright==1.40.0  # Commented out - too large for Railway free tier
 newspaper3k==0.2.8
 beautifulsoup4==4.12.2
 lxml==4.9.3

@@ -1,0 +1,23 @@
+# Ignore these files during Railway deployment
+.git/
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.env
+.env.local
+storage/uploads/*
+storage/reports/*
+tests/
+*.md
+!README.md
+.pytest_cache/
+.coverage
+htmlcov/
