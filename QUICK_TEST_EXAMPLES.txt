@@ -1,0 +1,125 @@
+=================================================================
+QUICK TEST EXAMPLES - Copy & Paste into Postman
+=================================================================
+
+SERVER: http://localhost:8000
+
+=================================================================
+TEST 1: TEXT CLAIM
+=================================================================
+Method: POST
+URL: http://localhost:8000/check
+Body: form-data
+
+Key: text
+Value: Government will provide free electricity to all households next month
+
+Expected Response:
+{
+  "submission_id": "...",
+  "status": "queued",
+  "estimated_time": 60
+}
+
+=================================================================
+TEST 2: URL CLAIM
+=================================================================
+Method: POST
+URL: http://localhost:8000/check
+Body: form-data
+
+Key: url
+Value: https://www.bbc.com/news
+
+Expected Response:
+{
+  "submission_id": "...",
+  "status": "queued",
+  "estimated_time": 60
+}
+
+=================================================================
+TEST 3: IMAGE CLAIM
+=================================================================
+Method: POST
+URL: http://localhost:8000/check
+Body: form-data
+
+Key: file
+Type: File
+Value: [Select any image file]
+
+Expected Response:
+{
+  "submission_id": "...",
+  "status": "queued",
+  "estimated_time": 60
+}
+
+=================================================================
+TEST 4: GET RESULT
+=================================================================
+Method: GET
+URL: http://localhost:8000/result/{submission_id}
+
+(Replace {submission_id} with actual ID from previous test)
+
+Expected Response:
+{
+  "status": "queued"
+}
+
+=================================================================
+MORE TEXT CLAIMS TO TEST:
+=================================================================
+
+1. COVID vaccines contain microchips that track your location
+
+2. Scientists discovered that drinking 8 glasses of water daily is a myth
+
+3. 5G towers cause cancer and spread COVID-19
+
+4. Elon Musk will give $1 million to random Twitter users
+
+5. WhatsApp will charge ₹25 per month from January 2026
+
+6. The moon landing in 1969 was faked in Hollywood
+
+7. Global warming is a hoax created by scientists
+
+8. Eating carrots can cure blindness
+
+9. India's GDP grew by 7.8% in Q2 2025
+
+10. Prime Minister announced new scheme for farmers yesterday
+
+=================================================================
+CURL COMMANDS (Run in terminal):
+=================================================================
+
+# Text claim
+curl -X POST http://localhost:8000/check -F "text=Test claim"
+
+# URL claim
+curl -X POST http://localhost:8000/check -F "url=https://bbc.com/news"
+
+# Image claim
+curl -X POST http://localhost:8000/check -F "file=@image.jpg"
+
+# Get result
+curl http://localhost:8000/result/YOUR_SUBMISSION_ID
+
+=================================================================
+HEALTH CHECKS:
+=================================================================
+
+# Basic health
+GET http://localhost:8000/
+
+# Detailed health
+GET http://localhost:8000/health
+
+# API docs
+GET http://localhost:8000/docs
+
+=================================================================
