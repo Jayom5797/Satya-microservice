@@ -1,0 +1,31 @@
+services:
+  # Web Service (API)
+  - type: web
+    name: satyamatrix-llm
+    runtime: python
+    plan: free
+    buildCommand: pip install --no-cache-dir -r requirements.txt && python -m spacy download en_core_web_sm
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: DEBUG
+        value: False
+      - key: STORAGE_MODE
+        value: local
+    
+  # Background Worker
+  - type: worker
+    name: satyamatrix-worker
+    runtime: python
+    plan: free
+    buildCommand: pip install --no-cache-dir -r requirements.txt && python -m spacy download en_core_web_sm
+    startCommand: python -m app.worker
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+
+databases:
+  # Redis
+  - name: satyamatrix-redis
+    plan: free
