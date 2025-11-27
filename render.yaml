@@ -4,7 +4,7 @@ services:
     name: satyamatrix-llm
     runtime: python
     plan: free
-    buildCommand: pip install --no-cache-dir -r requirements.txt
+    buildCommand: apt-get update && apt-get install -y build-essential python3-dev && pip install --no-cache-dir -r requirements.txt
     startCommand: python start.py
     envVars:
       - key: PYTHON_VERSION
